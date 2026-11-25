@@ -1,6 +1,6 @@
 databases:
   - name: codespace-sms-db
-    plan: basic-256mb
+    plan: free
     databaseName: codespace_sms
     user: codespace_sms
 
@@ -8,7 +8,7 @@ services:
   - type: web
     name: codespace-sms-hub
     runtime: python
-    plan: starter
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
