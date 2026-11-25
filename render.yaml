@@ -1,9 +1,3 @@
-databases:
-  - name: codespace-sms-db
-    plan: free
-    databaseName: codespace_sms
-    user: codespace_sms
-
 services:
   - type: web
     name: codespace-sms-hub
@@ -13,10 +7,6 @@ services:
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: codespace-sms-db
-          property: connectionString
       - key: APP_ENV
         value: production
       - key: WEBHOOK_SECRET
